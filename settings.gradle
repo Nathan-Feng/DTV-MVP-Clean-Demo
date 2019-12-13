@@ -1,0 +1,2 @@
+include ':app', ':stb_dtv'
+rootProject.name='DTV Clean Demo'

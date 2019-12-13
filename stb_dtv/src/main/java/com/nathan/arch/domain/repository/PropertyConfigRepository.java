@@ -1,0 +1,34 @@
+package com.nathan.arch.domain.repository;
+
+import com.nathan.arch.domain.interactors.base.Interactor;
+import com.nathan.arch.domain.model.PropertyGroupConfigDModel;
+import com.nathan.arch.domain.model.PropertySwitchConfigDModel;
+import com.nathan.arch.domain.model.SwitchOnOffDModel;
+
+import java.util.Map;
+
+public interface PropertyConfigRepository extends Interactor {
+
+    interface Callback  {
+        void showFactoryResetSuccess();
+        void showFactoryResetFail();
+    }
+    void attach(Callback callback);
+
+    int getGroupPropertyConfigValue(PropertyGroupConfigDModel groupValue);
+    boolean setOrDoSetChoose(PropertyGroupConfigDModel groupValue,int value);
+    SwitchOnOffDModel getPropertySwitchConfig(PropertySwitchConfigDModel switchConfig);
+
+    boolean setPropertySwitchConfig(PropertySwitchConfigDModel switchConfig, SwitchOnOffDModel onOff);
+
+    boolean setDVBPassword(String pwd);
+    String getDVBPassword();
+
+    Map<String,Integer> getRatingMapList();
+    Map<String,Integer> getLangListByType(PropertyGroupConfigDModel configItem);
+    Map<String,Integer> getPropertyTimeZoneList();
+    void factoryReset();
+
+    String getStackVersion();
+    String getCleanJarVersion();
+}
